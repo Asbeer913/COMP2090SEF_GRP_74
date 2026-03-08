@@ -1,0 +1,11 @@
+class Elephant(Animal):
+    def make_sound(self):
+        return "AAAAAAAAAAA!"
+class Bees(Animal):
+    def make_sound(self):
+        return "EEEEEEEEEEE!"
+
+elephant = Elephant()
+bee = Bees()
+print(elephant.make_sound())
+print(bee.make_sound())
