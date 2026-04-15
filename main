@@ -1,1 +1,74 @@
+from rental_system import RentalSystem
 
+def main():
+    system = RentalSystem()
+
+    # Default data
+    system.add_cd("The Matrix")
+    system.add_cd("Inception")
+    system.add_cd("Interstellar")
+    system.add_customer("Alex Chan")
+    system.add_customer("Emily Wong")
+
+    while True:
+        print("\n" + "="*35)
+        print("   Movie CD Rental System")
+        print("="*35)
+        print("1. View all Movie CDs")
+        print("2. View available Movie CDs")
+        print("3. Borrow a Movie CD")
+        print("4. Return a Movie CD")
+        print("5. View customer's borrowed list")
+        print("6. Add new Movie CD")
+        print("7. Add new customer")
+        print("8. Exit system")
+        print("="*35)
+
+        choice = input("Enter option (1-8): ").strip()
+
+        if choice == "1":
+            system.list_all_cds()
+        elif choice == "2":
+            system.get_available_cds()
+        elif choice == "3":
+            cust_id = input("Enter Customer ID (e.g. C1): ").strip()
+            try:
+                cd_id = int(input("Enter Movie CD ID (e.g. 101): "))
+                system.borrow(cust_id, cd_id)
+            except:
+                print("Invalid input format")
+        elif choice == "4":
+            cust_id = input("Enter Customer ID: ").strip()
+            try:
+                cd_id = int(input("Enter Movie CD ID: "))
+                system.return_cd(cust_id, cd_id)
+            except:
+                print("Invalid input format")
+        elif choice == "5":
+            cust_id = input("Enter Customer ID: ").strip()
+            customer = system.get_customer(cust_id)
+            if customer:
+                print(f"\n{customer.name}'s borrowed records:")
+                print(customer.get_borrowed_list())
+            else:
+                print("Customer does not exist")
+        elif choice == "6":
+            title = input("Movie title: ").strip()
+            if title:
+                system.add_cd(title)
+            else:
+                print("Movie title cannot be empty")
+        elif choice == "7":
+            name = input("Customer name: ").strip()
+            if name:
+                system.add_customer(name)
+            else:
+                print("Name cannot be empty")
+        elif choice == "8":
+            print("Thank you for using the system. Goodbye!")
+            break
+        else:
+            print("Invalid option, please try again")
+
+if __name__ == "__main__":
+    main()
