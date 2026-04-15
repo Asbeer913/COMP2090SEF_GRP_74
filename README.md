@@ -13,4 +13,4 @@ Sort CDs by popularity (using Heap Sort)\
 cd.py is the Movie CD class and abstract base class\
 customer.py is the Customer class\
 rental_system.py is the Main system logic + MaxHeap + Heap Sort\
-main.py is the Program entry point\
+main.py is the Program entry point
