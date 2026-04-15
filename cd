@@ -1,0 +1,52 @@
+from abc import ABC, abstractmethod
+
+class RentableItem(ABC):
+    """Abstract class (Abstraction)"""
+    @abstractmethod
+    def get_details(self):
+        pass
+
+    @abstractmethod
+    def is_available(self):
+        pass
+
+class MovieCD(RentableItem):
+    """Movie CD class"""
+    def __init__(self, cd_id, title):
+        self._cd_id = cd_id          # Encapsulation
+        self._title = title
+        self._is_borrowed = False
+        self._borrower = None
+
+    @property
+    def cd_id(self):
+        return self._cd_id
+
+    @property
+    def title(self):
+        return self._title
+
+    @property
+    def is_borrowed(self):
+        return self._is_borrowed
+
+    def borrow(self, customer):
+        if not self._is_borrowed:
+            self._is_borrowed = True
+            self._borrower = customer
+            return True
+        return False
+
+    def return_item(self):
+        if self._is_borrowed:
+            self._is_borrowed = False
+            self._borrower = None
+            return True
+        return False
+
+    def get_details(self):
+        status = "Borrowed" if self.is_borrowed else "Available"
+        return f"Movie CD{self.cd_id} | {self.title} | Status: {status}"
+
+    def is_available(self):
+        return not self._is_borrowed
