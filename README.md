@@ -1,6 +1,7 @@
 # COMP2090SEF_GRP_74
 COMP2090SEF Course Project\
-User Guide\
+ \
+User Guide:\
  \
 A Movie CD rental management system built with Python OOP.\
  \
