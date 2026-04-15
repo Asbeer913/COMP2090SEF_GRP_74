@@ -94,7 +94,7 @@ def main():
             for cd in sorted_cds:
                 print(cd.get_details())
         elif choice == "10":
-            print("Thank you for using the system. Goodbye!")
+            print("Thank you for using the system.Goodbye!")
             break
         else:
             print("Invalid option, please try again")
